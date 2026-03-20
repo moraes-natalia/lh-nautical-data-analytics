@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LH Nautical — Relatório Executivo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-light: #1a3055;
+    --ocean: #0e7490;
+    --ocean-light: #06b6d4;
+    --coral: #e05a3a;
+    --coral-light: #f87060;
+    --gold: #c9a84c;
+    --gold-light: #f0c96a;
+    --green: #10b981;
+    --green-light: #34d399;
+    --amber: #f59e0b;
+    --white: #f8fafc;
+    --white-dim: #cbd5e1;
+    --text-muted: #94a3b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 100px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #060f1e 0%, #0a1628 50%, #0d2040 100%);
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(14,116,144,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(224,90,58,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--ocean-light);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  .cover h1 span {
+    color: var(--ocean-light);
+  }
+
+  .cover-subtitle {
+    font-size: 18px;
+    color: var(--white-dim);
+    max-width: 520px;
+    margin-bottom: 64px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 32px;
+  }
+
+  .cover-meta-item label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .cover-meta-item span {
+    font-size: 14px;
+    color: var(--white-dim);
+    font-weight: 500;
+  }
+
+
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  .section {
+    margin-bottom: 100px;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ocean-light);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--ocean-light);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  p {
+    color: var(--white-dim);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  /* ── EXECUTIVE SUMMARY ── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 48px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .summary-card {
+    padding: 40px 32px;
+    background: var(--navy-mid);
+    position: relative;
+  }
+
+  .summary-card.red { border-top: 3px solid var(--coral); }
+  .summary-card.orange { border-top: 3px solid var(--amber); }
+  .summary-card.green { border-top: 3px solid var(--green); }
+
+  .summary-card .card-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .summary-card h3 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .summary-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .summary-card ul li {
+    color: var(--white-dim);
+    font-size: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .summary-card ul li:last-child { border-bottom: none; }
+
+  .summary-card ul li strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ── KPI STRIP ── */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .kpi {
+    background: var(--navy-mid);
+    border-radius: 12px;
+    padding: 28px 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .kpi.danger::after { background: var(--coral); }
+  .kpi.warning::after { background: var(--amber); }
+  .kpi.positive::after { background: var(--green); }
+  .kpi.neutral::after { background: var(--ocean); }
+
+  .kpi-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .kpi.danger .kpi-value { color: var(--coral); }
+  .kpi.warning .kpi-value { color: var(--amber); }
+  .kpi.positive .kpi-value { color: var(--green); }
+  .kpi.neutral .kpi-value { color: var(--ocean-light); }
+
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ── INSIGHT CARDS ── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .insight-card {
+    background: var(--navy-mid);
+    border-radius: 16px;
+    padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .insight-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .badge-red { background: rgba(224,90,58,0.15); color: var(--coral); }
+  .badge-green { background: rgba(16,185,129,0.15); color: var(--green); }
+  .badge-amber { background: rgba(245,158,11,0.15); color: var(--amber); }
+  .badge-blue { background: rgba(14,116,144,0.15); color: var(--ocean-light); }
+
+  .insight-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .insight-card p {
+    font-size: 14px;
+    color: var(--white-dim);
+    margin-bottom: 0;
+  }
+
+  .insight-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.15;
+    position: absolute;
+    top: 24px;
+    right: 28px;
+  }
+
+  .insight-card.red-accent { border-left: 3px solid var(--coral); }
+  .insight-card.green-accent { border-left: 3px solid var(--green); }
+  .insight-card.amber-accent { border-left: 3px solid var(--amber); }
+  .insight-card.blue-accent { border-left: 3px solid var(--ocean); }
+
+  /* ── FINANCIAL IMPACT ── */
+  .impact-block {
+    background: linear-gradient(135deg, rgba(224,90,58,0.08) 0%, rgba(10,22,40,0) 60%);
+    border: 1px solid rgba(224,90,58,0.2);
+    border-radius: 20px;
+    padding: 56px 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .impact-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--coral), transparent);
+  }
+
+  .impact-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .impact-context {
+    font-size: 16px;
+    color: var(--white-dim);
+    max-width: 600px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .impact-breakdown {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .impact-item {
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .impact-item .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--coral-light);
+    margin-bottom: 6px;
+  }
+
+  .impact-item .label {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ── RECOMMENDATIONS ── */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--coral), var(--amber), var(--green));
+  }
+
+  .timeline-block {
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid;
+  }
+
+  .timeline-dot.red { border-color: var(--coral); background: rgba(224,90,58,0.3); }
+  .timeline-dot.amber { border-color: var(--amber); background: rgba(245,158,11,0.3); }
+  .timeline-dot.green { border-color: var(--green); background: rgba(16,185,129,0.3); }
+
+  .timeline-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .timeline-label.red { color: var(--coral); }
+  .timeline-label.amber { color: var(--amber); }
+  .timeline-label.green { color: var(--green); }
+
+  .action-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .action-list li {
+    display: flex;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--navy-mid);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+    align-items: flex-start;
+  }
+
+  .action-list li .action-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .action-list li .action-text {
+    font-size: 14px;
+    color: var(--white-dim);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .action-list li .action-text strong {
+    color: var(--white);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ── OPPORTUNITIES ── */
+  .opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .opp-card {
+    background: var(--navy-mid);
+    border-radius: 14px;
+    padding: 32px 28px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.3s;
+  }
+
+  .opp-card:hover {
+    border-color: rgba(14,116,144,0.4);
+  }
+
+  .opp-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .opp-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .opp-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+    margin: 64px 0;
+  }
+
+  /* ── QUOTE ── */
+  .quote-block {
+    border-left: 3px solid var(--ocean);
+    padding: 24px 32px;
+    background: rgba(14,116,144,0.06);
+    border-radius: 0 12px 12px 0;
+    margin: 40px 0;
+  }
+
+  .quote-block p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    font-style: italic;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── APPENDIX ── */
+  .appendix {
+    background: var(--navy-mid);
+    border-radius: 20px;
+    padding: 56px 48px;
+  }
+
+  .appendix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  .appendix-item h4 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ocean-light);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .appendix-item p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 48px 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ── VISUALS PLACEHOLDER ── */
+  .visual-frame {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 32px 0;
+    text-align: center;
+  }
+
+  .visual-frame img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .visual-caption {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  .two-col-visuals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  /* ── PROBLEM BLOCK ── */
+  .problem-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  .problem-col {
+    background: var(--navy-mid);
+    border-radius: 14px;
+    padding: 32px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .problem-col.left {
+    border-top: 2px solid var(--coral);
+  }
+
+  .problem-col.right {
+    border-top: 2px solid var(--green);
+  }
+
+  .problem-col h4 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .problem-col.left h4 { color: var(--coral); }
+  .problem-col.right h4 { color: var(--green); }
+
+  .problem-col ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .problem-col ul li {
+    font-size: 14px;
+    color: var(--white-dim);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-weight: 300;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .problem-col ul li:last-child { border-bottom: none; }
+
+  .problem-col ul li::before {
+    content: '—';
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── TAG ── */
+  .tag {
+    display: inline-block;
+    background: rgba(14,116,144,0.15);
+    color: var(--ocean-light);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; color: black; }
+    .cover { background: #0a1628; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     CAPA
+══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-label">Relatório Executivo · Março de 2026</div>
+  <h1>Diagnóstico<br>Operacional<br><span>LH Nautical</span></h1>
+  <p class="cover-subtitle">Análise estratégica de dados com identificação de riscos financeiros, oportunidades de crescimento e recomendações de ação imediata.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <label>Analista</label>
+      <span>Natalia Moraes</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Período Analisado</label>
+      <span>Jan 2023 – Dez 2024</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Transações Analisadas</label>
+      <span>9.895</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Confidencialidade</label>
+      <span>Uso Interno</span>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="page">
+
+<!-- ══════════════════════════════════════════
+     1. RESUMO EXECUTIVO
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">01</div>
+  <h2>Resumo Executivo</h2>
+
+  <p style="font-size:17px; color: var(--white); font-weight:400; max-width:720px; margin-bottom:40px;">
+    A análise da operação da LH Nautical identificou <strong>R$ 39,9 milhões em prejuízo operacional</strong> no período de dois anos analisado. A causa não é pontual. É estrutural: os preços de venda não acompanham a variação do câmbio, criando uma margem negativa sistemática que cresce junto com o volume de vendas.
+  </p>
+
+  <div class="kpi-strip">
+    <div class="kpi danger">
+      <div class="kpi-value">R$ 39,9M</div>
+      <div class="kpi-label">Prejuízo operacional identificado<br>(2023–2024)</div>
+    </div>
+    <div class="kpi danger">
+      <div class="kpi-value">62,8%</div>
+      <div class="kpi-label">Das transações realizadas<br>abaixo do custo</div>
+    </div>
+    <div class="kpi positive">
+      <div class="kpi-value">10</div>
+      <div class="kpi-label">Clientes elite identificados<br>para retenção prioritária</div>
+    </div>
+    <div class="kpi neutral">
+      <div class="kpi-value">0,871</div>
+      <div class="kpi-label">Oportunidade de cross-sell<br>já validada por dados</div>
+    </div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="summary-card red">
+      <span class="card-icon">⚠</span>
+      <h3>Situação Atual</h3>
+      <ul>
+        <li><strong>62,8%</strong> das vendas abaixo do custo real</li>
+        <li>Prejuízo total de <strong>R$ 39,9M</strong>, com alta concentração em um único produto</li>
+        <li>Preços não acompanham variação cambial</li>
+        <li>Crescimento de receita sem garantia de expansão de margem</li>
+      </ul>
+    </div>
+    <div class="summary-card orange">
+      <span class="card-icon">⚡</span>
+      <h3>Impacto</h3>
+      <ul>
+        <li>Margem negativa <strong>estrutural</strong>, não pontual</li>
+        <li>Risco de escalabilidade com prejuízo</li>
+        <li>Decisões operacionais sem visibilidade de dados</li>
+        <li>Oportunidades de receita não capturadas</li>
+      </ul>
+    </div>
+    <div class="summary-card green">
+      <span class="card-icon">✓</span>
+      <h3>Recomendação Imediata</h3>
+      <ul>
+        <li>Precificação dinâmica vinculada ao câmbio</li>
+        <li>Revisão dos 10 produtos com maior prejuízo</li>
+        <li>Regra mínima de preço com proteção de margem</li>
+        <li>Programa de retenção dos clientes elite</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <p>"A integração entre vendas, custos em dólar e câmbio por data revelou R$ 39,9 milhões em prejuízo operacional que não é capturado quando as bases são analisadas de forma isolada."</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     2. PROBLEMA DE NEGÓCIO
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">02</div>
+  <h2>O Problema de Negócio</h2>
+
+  <p style="font-size:16px; max-width:720px; color:var(--white); font-weight:300; line-height:1.7;">
+    A LH Nautical opera com uma assimetria estrutural: <strong style="color:var(--white);">receitas em reais, custos em dólar</strong>. Quando o câmbio sobe, o custo de cada produto importado aumenta automaticamente — mas os preços praticados ao cliente não acompanham essa variação.
+  </p>
+  <p style="max-width:720px;">
+    O resultado é uma erosão silenciosa de margem que não aparece no volume de vendas, mas aparece no caixa. E os dados mostram que esse desalinhamento não se restringe a alguns produtos ou a alguns meses: ele está presente em <strong style="color:var(--white);">6.213 das 9.895 transações</strong> do período analisado.
+  </p>
+
+  <div class="problem-columns">
+    <div class="problem-col left">
+      <h4>Como opera hoje</h4>
+      <ul>
+        <li>Preços definidos sem atualização cambial automática</li>
+        <li>Custos de importação em USD variam diariamente</li>
+        <li>Margem calculada sem integração entre bases</li>
+        <li>Decisões de precificação baseadas em histórico fixo</li>
+      </ul>
+    </div>
+    <div class="problem-col right">
+      <h4>Como deveria operar</h4>
+      <ul>
+        <li>Preço mínimo calculado com câmbio do dia (PTAX)</li>
+        <li>Custo vigente atualizado por data de transação</li>
+        <li>Margem calculada em tempo real por produto</li>
+        <li>Alertas automáticos para produtos abaixo do custo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     3. PRINCIPAIS DESCOBERTAS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">03</div>
+  <h2>Principais Descobertas</h2>
+
+  <div class="insights-grid">
+
+    <div class="insight-card red-accent">
+      <span class="insight-number">01</span>
+      <span class="insight-badge badge-red">Risco Crítico</span>
+      <h3>Prejuízo Estrutural nas Vendas</h3>
+      <p>Mais de 6 em cada 10 transações foram realizadas abaixo do custo real de importação. Não se trata de exceção. É o padrão de operação atual. Enquanto o volume cresce, o prejuízo operacional escala junto.</p>
+    </div>
+
+    <div class="insight-card red-accent">
+      <span class="insight-number">02</span>
+      <span class="insight-badge badge-red">Concentração de Risco</span>
+      <h3>Um único produto concentra R$ 39,9M em prejuízo operacional</h3>
+      <p>O produto de maior prejuízo concentra 63,4% da sua receita total em perdas operacionais. É o ponto de intervenção mais urgente e de maior retorno imediato para a operação.</p>
+    </div>
+
+    <div class="insight-card green-accent">
+      <span class="insight-number">03</span>
+      <span class="insight-badge badge-green">Oportunidade de Crescimento</span>
+      <h3>Clientes Elite com Ticket 27% Acima da Média</h3>
+      <p>10 clientes compram nas três categorias da loja de forma consistente, com ticket médio entre R$ 290 mil e R$ 336 mil. São o perfil mais estratégico para retenção e expansão de receita recorrente.</p>
+    </div>
+
+    <div class="insight-card amber-accent">
+      <span class="insight-number">04</span>
+      <span class="insight-badge badge-amber">Sazonalidade Operacional</span>
+      <h3>Domingo Gera 14,5% Menos Receita que Sexta</h3>
+      <p>A diferença de R$ 546 mil entre o melhor e o pior dia da semana representa oportunidade concreta para escalonamento de equipe e ações comerciais direcionadas por calendário.</p>
+    </div>
+
+    <div class="insight-card blue-accent full-width">
+      <span class="insight-number">05</span>
+      <span class="insight-badge badge-blue">Decisão Baseada em Dados</span>
+      <h3>Dados disponíveis, mas sem integração orientada à decisão</h3>
+      <p>A base operacional está estruturada e tem boa integridade. Registros de vendas, histórico de custos e cadastro de clientes já existem. O que falta é a camada de integração que transforma esses dados em decisões automáticas, especialmente em precificação e gestão de margem.</p>
+    </div>
+
+  </div>
+
+  <div class="visual-frame">
+    <img src="outputs/visual_prejuizo_produtos.png" alt="Top 15 produtos com maior prejuízo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+    <div style="display:none; padding:40px; color:var(--text-muted); font-size:13px;">[ Gráfico: Onde está o dinheiro sendo perdido — Top 15 produtos por prejuízo absoluto ]</div>
+    <div class="visual-caption">Concentração do prejuízo operacional por produto. O produto 72 destaca-se com R$ 39,9M, mais que o dobro do segundo colocado.</div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     4. IMPACTO FINANCEIRO
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">04</div>
+  <h2>Impacto Financeiro</h2>
+
+  <div class="impact-block">
+    <div class="impact-headline">R$ 39,9M</div>
+    <p class="impact-context">A análise integrada, considerando câmbio por data e custo vigente, revelou R$ 39,9 milhões em prejuízo operacional que não é capturado quando as bases são analisadas de forma isolada.</p>
+
+    <div class="impact-breakdown">
+      <div class="impact-item">
+        <div class="value">6.213</div>
+        <div class="label">Transações realizadas abaixo do custo de importação</div>
+      </div>
+      <div class="impact-item">
+        <div class="value">150</div>
+        <div class="label">Produtos com algum grau de prejuízo registrado</div>
+      </div>
+      <div class="impact-item">
+        <div class="value">63,4%</div>
+        <div class="label">Da receita do produto mais crítico comprometida por perdas</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="max-width:700px; font-size:15px;">
+    A correção não exige novos dados nem nova infraestrutura. A metodologia já foi desenvolvida e validada: custo vigente na data da venda, convertido pela cotação oficial do Banco Central. O próximo passo é a implementação de uma política de precificação vinculada ao câmbio.
+  </p>
+
+  <div class="two-col-visuals">
+    <div class="visual-frame" style="margin:0">
+      <img src="outputs/visual_clientes_faturamento.png" alt="Faturamento top 10 clientes" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div style="display:none; padding:30px; color:var(--text-muted); font-size:13px;">[ Gráfico: Faturamento acumulado dos 10 clientes mais estratégicos ]</div>
+      <div class="visual-caption">Os 10 clientes elite acumulam mais de R$ 600M em faturamento no período.</div>
+    </div>
+    <div class="visual-frame" style="margin:0">
+      <img src="outputs/visual_vendas_dia_semana.png" alt="Vendas por dia da semana" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div style="display:none; padding:30px; color:var(--text-muted); font-size:13px;">[ Gráfico: Média de vendas por dia da semana ]</div>
+      <div class="visual-caption">Variação de R$ 546 mil entre sexta-feira (pico) e domingo (vale).</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     5. RECOMENDAÇÕES
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">05</div>
+  <h2>Recomendações de Ação</h2>
+  <p style="max-width:600px; margin-bottom:48px;">Priorizadas por impacto financeiro e viabilidade de implementação com a infraestrutura atual.</p>
+
+  <div class="timeline">
+
+    <div class="timeline-block">
+      <div class="timeline-dot red"></div>
+      <div class="timeline-label red">Curto Prazo · 0–30 dias</div>
+      <ul class="action-list">
+        <li>
+          <span class="action-icon">🎯</span>
+          <div class="action-text">
+            <strong>Revisão imediata do produto 72</strong>
+            Ajuste de preço com base no custo vigente + margem mínima. Maior retorno potencial por ação única.
+          </div>
+        </li>
+        <li>
+          <span class="action-icon">📏</span>
+          <div class="action-text">
+            <strong>Regra mínima de precificação</strong>
+            Implementar trava operacional: nenhum produto pode ser vendido abaixo de custo de importação atualizado + margem definida pela gestão.
+          </div>
+        </li>
+        <li>
+          <span class="action-icon">👥</span>
+          <div class="action-text">
+            <strong>Contato com os 10 clientes elite</strong>
+            Ação de relacionamento direcionada. Esses clientes já compram nas 3 categorias. O objetivo é manter frequência e antecipar churn.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot amber"></div>
+      <div class="timeline-label amber">Médio Prazo · 30–90 dias</div>
+      <ul class="action-list">
+        <li>
+          <span class="action-icon">⚙️</span>
+          <div class="action-text">
+            <strong>Precificação dinâmica vinculada ao câmbio</strong>
+            Automatizar a atualização de preços mínimos com base na cotação PTAX diária do Banco Central. Metodologia já desenvolvida e validada.
+          </div>
+        </li>
+        <li>
+          <span class="action-icon">📊</span>
+          <div class="action-text">
+            <strong>Painel de margem por produto</strong>
+            Monitoramento diário de quais produtos estão operando abaixo do custo, com atualização automática. Elimina a dependência de análises manuais.
+          </div>
+        </li>
+        <li>
+          <span class="action-icon">🗓️</span>
+          <div class="action-text">
+            <strong>Calendário comercial baseado em sazonalidade</strong>
+            Escalonamento de equipe e ações promocionais alinhados ao padrão semanal de vendas. Sexta é o pico; domingo é o vale.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="timeline-block">
+      <div class="timeline-dot green"></div>
+      <div class="timeline-label green">Longo Prazo · 90+ dias</div>
+      <ul class="action-list">
+        <li>
+          <span class="action-icon">🔗</span>
+          <div class="action-text">
+            <strong>Vitrine de cross-sell baseada em comportamento</strong>
+            Sistema de recomendação já construído e validado. O par GPS Garmin + Motor de Popa Volvo (similaridade 0,871) é o ponto de partida.
+          </div>
+        </li>
+        <li>
+          <span class="action-icon">🚀</span>
+          <div class="action-text">
+            <strong>Programa de expansão do segmento elite</strong>
+            Estratégia de aquisição focada em compradores de propulsão, com incentivo à expansão para ancoragem e eletrônicos. É o caminho comprovado para o perfil de alto valor.
+          </div>
+        </li>
+        <li>
+          <span class="action-icon">🔄</span>
+          <div class="action-text">
+            <strong>Automação do processo analítico</strong>
+            Integração automática entre base de vendas, custos de importação e câmbio, eliminando o retrabalho manual em cada ciclo de análise.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     6. OPORTUNIDADES
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">06</div>
+  <h2>Oportunidades de Crescimento</h2>
+  <p style="max-width:600px; margin-bottom:40px;">Além da correção do problema de margem, a base de dados revela três vetores concretos de expansão de receita.</p>
+
+  <div class="opportunities-grid">
+    <div class="opp-card">
+      <span class="opp-icon">⚓</span>
+      <h3>Propulsão como Porta de Entrada</h3>
+      <p>A categoria propulsão lidera o volume de compras entre os clientes elite (6.030 itens). Compradores de motores têm o maior potencial de evoluir para o perfil estratégico e devem ser o foco de aquisição.</p>
+    </div>
+    <div class="opp-card">
+      <span class="opp-icon">🔗</span>
+      <h3>Cross-sell Validado por Dados</h3>
+      <p>O sistema de recomendação já identificou pares de produtos com alta co-ocorrência de compra. A vitrine "quem comprou também comprou" pode ser implementada sem nova infraestrutura.</p>
+    </div>
+    <div class="opp-card">
+      <span class="opp-icon">👑</span>
+      <h3>Expansão do Segmento Elite</h3>
+      <p>Clientes que compram nas 3 categorias têm ticket até 27% acima da média e alta frequência. A estratégia de retenção desse grupo tem maior ROI do que aquisição de novos clientes em geral.</p>
+    </div>
+  </div>
+
+  <div class="two-col-visuals" style="margin-top:32px;">
+    <div class="visual-frame" style="margin:0">
+      <img src="outputs/visual_clientes_elite.png" alt="Volume por categoria - clientes elite" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div style="display:none; padding:30px; color:var(--text-muted); font-size:13px;">[ Gráfico: Volume por categoria entre os clientes elite ]</div>
+      <div class="visual-caption">Propulsão lidera com 6.030 itens entre os clientes de maior valor.</div>
+    </div>
+    <div class="visual-frame" style="margin:0">
+      <img src="outputs/visual_categoria_elite.png" alt="Produtos mais similares ao GPS" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div style="display:none; padding:30px; color:var(--text-muted); font-size:13px;">[ Gráfico: Produtos com maior afinidade de compra com o GPS Garmin ]</div>
+      <div class="visual-caption">Motor de Popa Volvo é o produto mais indicado para cross-sell com o GPS Garmin (0,871 de afinidade).</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     APÊNDICE TÉCNICO
+══════════════════════════════════════════ -->
+<div style="border-top: 2px solid rgba(255,255,255,0.06); margin: 0 60px; padding-top: 64px;">
+  <p style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--text-muted); margin-bottom:48px; font-weight:600;">Apêndice Técnico — Suporte à validação dos resultados</p>
+
+  <div class="section">
+    <div class="section-tag">07</div>
+    <h2>O Que Já Foi Construído</h2>
+    <p style="max-width:700px; margin-bottom:32px;">As recomendações não são teóricas. Os mecanismos de decisão foram desenvolvidos, testados e validados sobre a base real da LH Nautical.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:32px;">
+      <div style="background:var(--navy-mid); border-radius:12px; padding:24px 28px; border:1px solid rgba(255,255,255,0.06);">
+        <span class="insight-badge badge-blue" style="margin-bottom:12px;">Pronto para uso</span>
+        <h3 style="font-size:15px; margin-bottom:8px;">Cálculo de Margem com Câmbio Real</h3>
+        <p style="font-size:13px; margin:0;">Validado em 9.895 vendas e 726 datas com cotação oficial do Banco Central.</p>
+      </div>
+      <div style="background:var(--navy-mid); border-radius:12px; padding:24px 28px; border:1px solid rgba(255,255,255,0.06);">
+        <span class="insight-badge badge-blue" style="margin-bottom:12px;">Pronto para uso</span>
+        <h3 style="font-size:15px; margin-bottom:8px;">Sistema de Recomendação de Produtos</h3>
+        <p style="font-size:13px; margin:0;">Afinidade calculada entre todos os 150 produtos do catálogo.</p>
+      </div>
+      <div style="background:var(--navy-mid); border-radius:12px; padding:24px 28px; border:1px solid rgba(255,255,255,0.06);">
+        <span class="insight-badge badge-blue" style="margin-bottom:12px;">Pronto para uso</span>
+        <h3 style="font-size:15px; margin-bottom:8px;">Segmentação de Clientes Estratégicos</h3>
+        <p style="font-size:13px; margin:0;">Os 10 clientes prioritários mapeados com nome, localização e perfil de compra.</p>
+      </div>
+      <div style="background:var(--navy-mid); border-radius:12px; padding:24px 28px; border:1px solid rgba(255,255,255,0.06);">
+        <span class="insight-badge badge-blue" style="margin-bottom:12px;">Referência estabelecida</span>
+        <h3 style="font-size:15px; margin-bottom:8px;">Baseline de Previsão de Demanda</h3>
+        <p style="font-size:13px; margin:0;">Erro médio de 1,64 unidades por dia. Benchmark para evoluções futuras.</p>
+      </div>
+    </div>
+
+    <div class="visual-frame">
+      <img src="outputs/visual_recomendacao.png" alt="Previsão de demanda" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div style="display:none; padding:40px; color:var(--text-muted); font-size:13px;">[ Gráfico: Previsão de demanda — Real vs Previsto, Janeiro 2024 ]</div>
+      <div class="visual-caption">Previsão de demanda: real vs. previsto em janeiro de 2024. MAE de 1,64 unidades por dia.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">08</div>
+    <h2>Base Metodológica</h2>
+    <div class="appendix-grid" style="margin-top:0;">
+      <div class="appendix-item">
+        <h4>Base de Dados</h4>
+        <p>9.895 registros de vendas (Jan 2023–Dez 2024), 150 produtos únicos, 1.260 registros de custo de importação em USD.</p>
+      </div>
+      <div class="appendix-item">
+        <h4>Fonte do Câmbio</h4>
+        <p>API oficial do Banco Central do Brasil (PTAX, cotação de venda). Cobertura de 100% das 726 datas únicas do período.</p>
+      </div>
+      <div class="appendix-item">
+        <h4>Cálculo de Margem</h4>
+        <p>Último preço USD registrado antes da venda, convertido pela PTAX do dia e multiplicado pela quantidade. Impostos e frete não incluídos.</p>
+      </div>
+      <div class="appendix-item">
+        <h4>Sistema de Recomendação</h4>
+        <p>Similaridade de cosseno sobre matriz binária (49 clientes × 150 produtos). Prova de conceito, pois a base de clientes é insuficiente para produção.</p>
+      </div>
+      <div class="appendix-item">
+        <h4>Segmentação de Clientes</h4>
+        <p>Ticket médio, diversidade mínima de 3 categorias e desempate por ID. Top 10 por ticket médio entre clientes multidisciplinares.</p>
+      </div>
+      <div class="appendix-item">
+        <h4>Ferramentas</h4>
+        <p>Python 3, DuckDB, Pandas, Scikit-learn. Resultados validados por dupla verificação Python + SQL.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<!-- ══════════════════════════════════════════
+     CONCLUSÃO
+══════════════════════════════════════════ -->
+<div style="max-width:1100px; margin:0 auto; padding:0 60px 80px;">
+  <div class="divider"></div>
+  <div class="section-tag">Conclusão</div>
+  <h2>Decisão de Gestão, não de Tecnologia</h2>
+  <p style="font-size:17px; color:var(--white); font-weight:300; max-width:760px; line-height:1.8; margin-bottom:16px;">
+    A LH Nautical possui dados, histórico e escala suficientes para suportar decisões estratégicas. O crescimento operacional atual ocorre com margem comprometida.
+  </p>
+  <p style="font-size:17px; color:var(--white); font-weight:300; max-width:760px; line-height:1.8; margin-bottom:16px;">
+    A metodologia já está validada, os clientes estratégicos estão identificados e os mecanismos de recomendação estão estruturados. A correção não depende de novos dados nem de infraestrutura adicional.
+  </p>
+  <p style="font-size:17px; color:var(--white); font-weight:300; max-width:760px; line-height:1.8; margin-bottom:16px;">
+    Manter a operação nas condições atuais implica sustentar perdas proporcionais ao crescimento de receita.
+  </p>
+  <p style="font-size:17px; color:var(--white); font-weight:300; max-width:760px; line-height:1.8; margin-bottom:16px;">
+    O próximo passo é implementar imediatamente uma política de precificação alinhada ao câmbio, com foco prioritário nos produtos de maior impacto financeiro identificados neste estudo.
+  </p>
+  <p style="font-size:17px; color:var(--white); font-weight:600; max-width:760px; line-height:1.8; margin-bottom:0;">
+    Essa é uma decisão de gestão sobre captura de margem, não de tecnologia.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<div class="footer">
+  <p>LH Nautical · Relatório Executivo · Março de 2026 · Analista: Natalia Moraes · Uso Interno</p>
+</div>
+
+</body>
+</html>
