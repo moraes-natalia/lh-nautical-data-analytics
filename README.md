@@ -5,8 +5,19 @@
 > **Ferramentas:** Python 3 · DuckDB · Pandas · Scikit-learn
 
 ---
+## Entregáveis
+
+| | Link |
+|---|---|
+| 📊 Relatório Executivo | [GitHub Pages](https://moraes-natalia.github.io/lh-nautical-data-analytics/) |
+| 📓 Notebook | [Visualizar](https://moraes-natalia.github.io/lh-nautical-data-analytics/lh_nautical_analise_dados.html) |
+| 📁 Dados | [`data/`](data/) |
+| 📈 Visuais | [`outputs/`](outputs/) |
+
+___
 
 ## Sobre o projeto
+
 
 A LH Nautical é uma distribuidora de equipamentos náuticos que opera com uma assimetria estrutural relevante: receitas registradas em BRL e custos atrelados ao USD. Como o câmbio varia diariamente e as bases nunca foram integradas, parte do portfólio era vendida abaixo do custo sem que ninguém percebesse.
 
