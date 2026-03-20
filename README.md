@@ -7,12 +7,12 @@
 ---
 ## Entregáveis
 
-| | Link |
+| Entregável | Link |
 |---|---|
-| 📊 Relatório Executivo | [GitHub Pages](https://moraes-natalia.github.io/lh-nautical-data-analytics/) |
-| 📓 Notebook | [Visualizar](https://moraes-natalia.github.io/lh-nautical-data-analytics/lh_nautical_analise_dados.html) |
-| 📁 Dados | [`data/`](data/) |
-| 📈 Visuais | [`outputs/`](outputs/) |
+| Relatório Executivo | [Acessar via GitHub Pages](https://moraes-natalia.github.io/lh-nautical-data-analytics/) |
+| Notebook | [Visualizar análise completa](https://moraes-natalia.github.io/lh-nautical-data-analytics/lh_nautical_analise_dados.html) |
+| Dados | [`data/`](data/) |
+| Visuais | [`outputs/`](outputs/) |
 
 ___
 
